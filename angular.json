@@ -24,9 +24,13 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -61,7 +65,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "parentTask:build"
+            "browserTarget": "parentTask:build",
+            "proxyConfig": "src/proxy.conf.json"
           },
           "configurations": {
             "production": {
@@ -120,5 +125,8 @@
       }
     }
   },
-  "defaultProject": "parentTask"
+  "defaultProject": "parentTask",
+  "cli": {
+    "analytics": "fabb7efc-2a21-4f7a-99c6-c61fe85bd66c"
+  }
 }
