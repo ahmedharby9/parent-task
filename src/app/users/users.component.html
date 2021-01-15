@@ -7,45 +7,71 @@
       </ol>
       <div class="d-flex justify-content-between">
         <h1 class="cost-title">Users List</h1>
-        <button class="btn btn-primary "><i class="bi bi-plus"></i> New User</button>
+        <button class="btn btn-primary " data-toggle="modal" data-target="#userModal"
+                (click)="this.currentSelectedUser = {}; viewUserSide=false"><i class="bi bi-plus"></i> New User
+        </button>
       </div>
 
     </nav>
   </div>
 </div>
 <div class="container">
-<div class="row">
-  <div class="col-12">
-    <div class="card o-hidden  my-5">
-      <div class="card-body p-0 d-flex">
-        <!-- start table-->
-        <table class="table table-borderless m-3">
-          <thead>
-          <tr>
-            <th scope="col">User</th>
-            <th scope="col">Action</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr *ngFor="let user of userListInfo">
-            <td class="cost-td-user">
-              <img [src]="user?.avatar" class="rounded-circle" alt="">
-              <h3>{{user?.first_name}} {{user?.last_name}}</h3>
-            </td>
-            <td class="text-right cost-td-btns">
-              <button class="btn btn-outline-success"><i class="bi bi-pencil-fill"></i></button>
-              <button class="btn btn-outline-success"><i class="bi bi-trash-fill"></i></button>
-              <button class="btn"><i class="bi bi-chevron-right"></i></button>
-            </td>
-          </tr>
-          </tbody>
-        </table>
-        <app-single-user-view></app-single-user-view>
+  <div class="row">
+    <div class="col-12">
+      <div class="card o-hidden  my-5">
+        <div class="card-body p-0 d-flex">
+          <!-- start table-->
+          <div class="scrollArea flex-row" infiniteScroll
+               [infiniteScrollDistance]="1"
+               [infiniteScrollThrottle]="10"
+               [scrollWindow]="false"
+               (scrolled)="onScroll($event)">
+            <table class="table table-borderless m-3">
+              <thead>
+              <tr>
+                <th scope="col">User</th>
+                <th scope="col">Action</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let user of userListInfo" [class.active]="currentSelectedUser?.id == user?.id&&viewUserSide" >
+                <td class="cost-td-user" (click)="viewUserSide=true;currentSelectedUser=user"
+                   [attr.colSpan]="(currentSelectedUser?.id == user?.id&&viewUserSide)?2:0" >
+                  <img [src]="user?.avatar" class="rounded-circle" alt="">
+                  <h3>{{user?.first_name}} {{user?.last_name}}</h3>
+                  <button class="btn float-right mt-2" *ngIf="currentSelectedUser?.id == user?.id&&viewUserSide">
+                    <i class="bi bi-chevron-right"></i>
+                  </button>
+                </td>
+                <td class="text-right cost-td-btns" *ngIf="!viewUserSide||currentSelectedUser?.id != user?.id">
+                  <button class="btn btn-outline-success" data-toggle="modal" data-target="#userModal"
+                          (click)="currentSelectedUser=user" >
+                    <i class="bi bi-pencil-fill"></i>
+                  </button>
+                  <button class="btn btn-outline-success">
+                    <i class="bi bi-trash-fill"></i>
+                  </button>
+                  <button class="btn" (click)="viewUserSide=true;currentSelectedUser=user">
+                    <i class="bi bi-chevron-right"></i>
+                  </button>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="position-absolute loading" *ngIf="isLoading">
+            <div class="spinner-grow d-block mx-auto my-2" role="status">
+              <span class="visually-hidden"></span>
+            </div>
+            Loading more users
+          </div>
+          <app-single-user-view [data]="currentSelectedUser" [display]="viewUserSide"
+                                (onClose)="viewUserSide=$event"></app-single-user-view>
+        </div>
       </div>
     </div>
   </div>
 </div>
-</div>
 
-<app-single-user-edit></app-single-user-edit>
+<app-single-user-edit [data]="currentSelectedUser"></app-single-user-edit>
 <app-confirm-dialog></app-confirm-dialog>
