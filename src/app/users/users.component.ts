@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {CallApiService} from '../services/call-api.service';
 
 @Component({
   selector: 'app-users',
@@ -6,10 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./users.component.css']
 })
 export class UsersComponent implements OnInit {
+  public paging: any = {};
+  public userListInfo: any[] = [];
 
-  constructor() { }
+  constructor(private callApi: CallApiService) {
+  }
 
   ngOnInit(): void {
+    this.callApi.getUsersList({}).subscribe((res) => {
+      this.userListInfo = res.data;
+    });
   }
 
 }

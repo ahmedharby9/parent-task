@@ -27,10 +27,10 @@
           </tr>
           </thead>
           <tbody>
-          <tr>
+          <tr *ngFor="let user of userListInfo">
             <td class="cost-td-user">
-              <img src="../../assets/img/t-av.jpg" class="rounded-circle" alt="">
-              <h3>Vladimir Usov</h3>
+              <img [src]="user?.avatar" class="rounded-circle" alt="">
+              <h3>{{user?.first_name}} {{user?.last_name}}</h3>
             </td>
             <td class="text-right cost-td-btns">
               <button class="btn btn-outline-success"><i class="bi bi-pencil-fill"></i></button>
@@ -38,26 +38,14 @@
               <button class="btn"><i class="bi bi-chevron-right"></i></button>
             </td>
           </tr>
-          <tr>
-            <td class="cost-td-user">
-              <img src="../../assets/img/t-av.jpg" class="rounded-circle" alt="">
-              <h3>Vladimir Usov</h3>
-            </td>
-            <td class="text-right cost-td-btns">
-              <button class="btn btn-outline-success"><i class="bi bi-pencil-fill"></i></button>
-              <button class="btn btn-outline-success"><i class="bi bi-trash-fill"></i></button>
-              <button class="btn"><i class="bi bi-chevron-right"></i></button>
-            </td>
-          </tr>
-
           </tbody>
         </table>
         <app-single-user-view></app-single-user-view>
-
-        <!--    -->
       </div>
     </div>
   </div>
 </div>
 </div>
 
+<app-single-user-edit></app-single-user-edit>
+<app-confirm-dialog></app-confirm-dialog>
