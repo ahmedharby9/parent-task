@@ -17,6 +17,7 @@ import {ToastrModule} from 'ngx-toastr';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HttpConfigInterceptor} from './_helpers/http-config.interceptor';
 import { SafePipe } from './pipes/safe.pipe';
+import {InfiniteScrollModule} from 'ngx-infinite-scroll';
 
 const routes: Routes = [
   {path: 'login', component: AuthComponent},
@@ -24,7 +25,7 @@ const routes: Routes = [
   {path: 'users/:id', component: UsersComponent, canActivate: [AuthGuard]},
   {path: 'logout', redirectTo: '/login', pathMatch: 'full'},
   {path: '', redirectTo: '/login', pathMatch: 'full'},
-  {path: '**', component: AuthComponent}
+  {path: '**', redirectTo: '/login', pathMatch: 'full'}
 ];
 
 @NgModule({
@@ -45,7 +46,8 @@ const routes: Routes = [
     ReactiveFormsModule,
     HttpClientModule,
     ToastrModule.forRoot(),
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    InfiniteScrollModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
