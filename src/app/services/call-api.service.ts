@@ -42,7 +42,23 @@ export class CallApiService {
     return;
   }
 
-  getUsersList(page): Observable<any>{
+  getUsersList(page): Observable<any> {
     return this.http.get(`${this.path}/users?${page}`);
+  }
+
+  postNewUser(body): Observable<any> {
+    return this.http.post(`${this.path}/users`, body);
+  }
+
+  putUpdateUser(userId, body): Observable<any> {
+    return this.http.put(`${this.path}/users/${userId}`, body);
+  }
+
+  getOneUser(userId): Observable<any> {
+    return this.http.get(`${this.path}/users/${userId}`);
+  }
+
+  deleteUser(userId): Observable<any> {
+    return this.http.delete(`${this.path}/users/${userId}`);
   }
 }
