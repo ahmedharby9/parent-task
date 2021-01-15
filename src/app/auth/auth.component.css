@@ -8,14 +8,6 @@
 }
 
 
-.card {
-  height: 567px;
-  /*width: 767px;*/
-  border-radius: 10px;
-  background-color: #FFFFFF;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
-}
-
 .cost-intro h1 {
   margin-top: 135px;
   margin-bottom: 10px;
@@ -56,12 +48,3 @@
   line-height: 17px;
 }
 
-.btn-primary {
-  height: 40px;
-  width: 94px;
-  border-radius: 20px;
-  background-color: #8E44AD;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
-  border: none;
-  text-transform: uppercase;
-}

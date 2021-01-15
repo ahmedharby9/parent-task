@@ -16,36 +16,38 @@
                   <h1>Welcome Back!</h1>
                   <p>Please login to access your <span style="color: #8E44AD">Spaces</span> Dashboard</p>
                 </div>
-                <form class="user">
+                <form class="user" [formGroup]="userLoginInfo" (ngSubmit)="onSubmit()">
                   <div class="form-group">
-                    <label>Username</label>
-                    <input type="email" class="form-control form-control-user"
-                           id="exampleInputEmail" aria-describedby="emailHelp"
-                           placeholder="Username...">
+                    <label for="inputEmail">Username</label>
+                    <input type="email"
+                           class="form-control form-control-user"
+                           id="inputEmail"
+                           aria-describedby="emailHelp"
+                           placeholder="Username..."
+                           formControlName="email"
+                           [class.border-danger]="userLoginInfo.controls.email.invalid
+                           && (userLoginInfo.controls.email.dirty || userLoginInfo.controls.email.touched)">
                   </div>
                   <div class="form-group">
-                    <label>Password</label>
-                    <input type="password" class="form-control form-control-user"
-                           id="exampleInputPassword" placeholder="**********">
+                    <label for="inputPassword">Password</label>
+                    <input type="password"
+                           class="form-control form-control-user"
+                           id="inputPassword"
+                           placeholder="**********"
+                           formControlName="password"
+                           [class.border-danger]="userLoginInfo.controls.email.invalid &&
+                            (userLoginInfo.controls.email.dirty || userLoginInfo.controls.email.touched)">
                   </div>
                   <div class="d-flex justify-content-between">
                     <a class="small" href="">Forgot Password?</a>
-                    <a href="" class="btn btn-primary">
-                      Login
-                    </a>
+                    <button class="btn btn-primary" type="submit" > Login  </button>
                   </div>
-
                 </form>
-
               </div>
             </div>
           </div>
         </div>
       </div>
-
     </div>
-
   </div>
-
 </div>
-
