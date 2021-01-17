@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 
 @Component({
   selector: 'app-confirm-dialog',
@@ -6,10 +6,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./confirm-dialog.component.css']
 })
 export class ConfirmDialogComponent implements OnInit {
+  @Input() Message: string;
+  @Output() onCallback: EventEmitter<any> = new EventEmitter<any>();
+  @ViewChild('closeBtnRef') closeBtnRef: ElementRef;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
 
+  onApprove(): void {
+    this.onCallback.emit(true);
+    this.closeBtnRef.nativeElement.click();
+  }
 }
