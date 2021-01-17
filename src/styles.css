@@ -1,19 +1,77 @@
 /* You can add global styles to this file, and also import other style files */
-body{
+
+@font-face {
+  font-family: "SFNS Display";
+  src: url("assets/fonts/344d17417b87d35e88d9df15bea12e2e.eot");
+  src: url("./assets/fonts/344d17417b87d35e88d9df15bea12e2e.eot?#iefix") format("embedded-opentype"), url("./assets/fonts/344d17417b87d35e88d9df15bea12e2e.woff2") format("woff2"), url("./assets/fonts/344d17417b87d35e88d9df15bea12e2e.woff") format("woff"), url("./assets/fonts/344d17417b87d35e88d9df15bea12e2e.ttf") format("truetype"), url("./assets/fonts/344d17417b87d35e88d9df15bea12e2e.svg#SFNS Display") format("svg");
+}
+
+*,
+body,
+a,
+h1,
+h2,
+h3,
+h4,
+h5,
+button {
+  font-family: SFNS Display !important;
+}
+
+body {
   background-color: #F5F5F5;
 }
 
 .card {
   min-height: 567px;
-  /*width: 767px;*/
   border-radius: 10px;
   background-color: #FFFFFF;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
 }
+
+.btn {
+  width: 9rem;
+  border: none !important;
+  margin-right: 15px;
+  font-size: .9em;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+}
+
 .btn-primary {
   border-radius: 20px;
   background-color: #8E44AD;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
-  border: none;
+  color: #FFFFFF;
   text-transform: uppercase;
+}
+
+.btn-primary:focus {
+  background-color: #8E44AD;
+  color: #FFFFFF;
+}
+
+.btn-primary:disabled {
+  background-color: #8E44AD;
+  color: #FFFFFF;
+}
+
+.btn-primary:hover {
+  background-color: #8E44AD;
+  color: #FFFFFF;
+}
+
+.btn-outline-primary {
+  border: 1px solid #8E44AD !important;
+  color: #8E44AD;
+}
+
+.btn-outline-primary:hover {
+  background: #8E44AD !important;
+  color: #FFFFFF !important;
+}
+
+.modal-content {
+  width: 363px;
+  border-radius: 10px;
+  background-color: #FFFFFF;
+  border: none;
 }
