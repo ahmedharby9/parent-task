@@ -39,7 +39,7 @@
 }
 
 .table thead tr th:last-child {
-  width: 160px !important;
+  width: 180px !important;
 }
 
 
@@ -85,12 +85,14 @@ tr.active td h3,tr.active td i{
 .cost-td-btns {
   vertical-align: middle;
 }
-
+.cost-td-btns .btn{
+  width: auto!important;
+  box-shadow: none!important;
+}
 .cost-td-btns .btn:not(:last-child) {
   color: #8E44AD;
-  border-color: #8E44AD;
-  margin-right: 15px;
-  font-size: .9em;
+  border: 1px solid #8E44AD!important;
+
 }
 
 .cost-td-btns .btn:not(:last-child):hover {
