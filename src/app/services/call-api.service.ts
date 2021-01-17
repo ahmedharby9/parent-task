@@ -39,9 +39,11 @@ export class CallApiService {
 
   setLogout(): Observable<any> {
     localStorage.removeItem('_token');
-    return;
+    return ;
   }
-
+  /* *****************************************
+   *            Retrieving Data from APIs    *
+   ******************************************/
   getUsersList(page): Observable<any> {
     return this.http.get(`${this.path}/users?${page}`);
   }

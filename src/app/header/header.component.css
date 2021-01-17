@@ -1,12 +1,10 @@
 nav {
   height: 70px;
-  /*width: 1440px;*/
   background-color: #FFFFFF;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
 }
 
-.navbar-light .navbar-nav .nav-link,
-.navbar-light .navbar-nav .btn {
+.navbar-light .navbar-nav .nav-link{
   color: #34495E;
   font-size: 15px;
   letter-spacing: 0;
@@ -14,13 +12,7 @@ nav {
   text-transform: uppercase;
   margin-right: 22px;
 }
-
 .navbar-light .navbar-nav .btn {
-
-  border-radius: 20px;
   color: #FFFFFF!important;
-  background-color: #8E44AD;
-  border: none;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
   padding: 9px 25px!important;
 }
